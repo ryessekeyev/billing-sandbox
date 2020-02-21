@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: billing
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      enabled: true
+  jackson:
+    serialization.indent_output: true
+    serialization.write_dates_as_timestamps: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dev-billing
+    username: billing
+    password: Qwerty321
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    database: POSTGRESQL
+    database-platform: kz.dits.billing.domain.util.FixedPostgreSQL82Dialect
+    properties:
+      hibernate.format_sql: true
+
+flyway:
+  locations: classpath:/dev/db/migration
+  clean-on-validation-error: true
+
+server:
+  port: 8090

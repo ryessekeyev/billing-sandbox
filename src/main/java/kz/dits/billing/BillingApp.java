@@ -7,17 +7,15 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableAsync;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 @SpringBootApplication
 @EnableConfigurationProperties
 @EnableAsync
 @Slf4j
 public class BillingApp {
-
-    private final Environment env;
-
-    public BillingApp(Environment env) {
-        this.env = env;
-    }
 
     public static void main(String[] args)  {
         SpringApplication app = new SpringApplication(BillingApp.class);

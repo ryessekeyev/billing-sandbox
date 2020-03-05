@@ -24,6 +24,20 @@ spring:
     database-platform: kz.dits.billing.domain.util.FixedPostgreSQL82Dialect
     properties:
       hibernate.format_sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        default-requeue-rejected: false
+        concurrency: 4
+        max-concurrency: 10
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 3000
 
 flyway:
   locations: classpath:/dev/db/migration
@@ -31,3 +45,7 @@ flyway:
 
 server:
   port: 8090
+
+application:
+  rabbitmq:
+    paymentEventQueue: billing-payment
